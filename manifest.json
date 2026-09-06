@@ -8,7 +8,7 @@
   "action": {
     "title": "Ficha Jonas",
     "icon": "https://www.olwbear.rodeo/app-icon.png",
-    "popover": "/leclerc/index.html",
+    "popover": "/Jonas/index.html",
     "height": 700,
     "width": 400
   }
