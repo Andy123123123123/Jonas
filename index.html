@@ -362,14 +362,12 @@
         </div>
       `;
 
-      /* Configurações dos botões de Ataques */
       document.getElementById("btn-fuzil").onclick = () => rolarAtaque("Fuzil de Assalto", 2, 10, 0, "19/x3");
       document.getElementById("btn-espingarda").onclick = () => rolarAtaque("Espingarda", 4, 6, 0, "x3");
       document.getElementById("btn-revolver").onclick = () => rolarAtaque("Revólver", 2, 6, 0, "19/x3");
       document.getElementById("btn-irmaos").onclick = () => rolarAtaque("Irmãos até a Morte", 2, 8, 0, "19");
       document.getElementById("btn-wunderwaffe").onclick = () => rolarAtaque("Wunderwaffe Dg-2", 3, 10, 0, "19/x3");
 
-      /* Configurações dos Rituais */
       document.getElementById("btn-chrono-norm").onclick = () => rolarAtaque("Chronosapiano (Normal)", 3, 8, 3);
       document.getElementById("btn-chrono-disc").onclick = () => rolarAtaque("Chronosapiano (Discente)", 5, 8, 5);
       document.getElementById("btn-chrono-verd").onclick = () => rolarAtaque("Chronosapiano (Verdadeiro)", 7, 8, 7);
@@ -415,7 +413,11 @@
       });
     }
 
-    window.onload = () => { renderizar(); };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", renderizar);
+    } else {
+      renderizar();
+    }
   </script>
 </body>
 </html>
