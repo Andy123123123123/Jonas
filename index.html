@@ -2,14 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Ficha Leclerc</title>
+  <title>Ficha Jonas</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #000; color: #fff; padding: 10px; margin: 0; }
-    h3 { border-bottom: 1px solid #333; padding-bottom: 4px; margin-top: 15px; margin-bottom: 8px; color: #aaa; }
-    
-    /* Abas de Navegação */
-    .tab-container { display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid #333; padding-bottom: 6px; }
-    .tab-btn { flex: 1; background: #1a1a1a; border: 1px solid #333; color: #888; padding: 8px 2px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 11px; text-align: center; }
+    body { font-family: Arial, sans-serif; background: #000; color: #fff; padding: 10px; margin: 0; box-sizing: border-box; }
+
+    /* Menu de Abas */
+    .tab-container { display: flex; width: 100%; gap: 6px; margin-bottom: 12px; border-bottom: 1px solid #333; padding-bottom: 6px; box-sizing: border-box; }
+    .tab-btn { flex: 1 1 0px; min-width: 0; background: #1a1a1a; border: 1px solid #333; color: #888; padding: 8px 2px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 12px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .tab-btn:hover { background: #2a2a2a; color: #fff; }
     .tab-btn.active { background: #333; color: #fff; border-color: #2196f3; }
 
@@ -17,30 +16,31 @@
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
-    /* Painel de Dados em Cada Aba */
+    /* Painel de Dados */
     .dice-panel { background: #111; border: 1px solid #222; border-radius: 6px; padding: 8px; margin-bottom: 12px; }
-    .dice-panel-title { font-size: 12px; font-weight: bold; color: #888; margin-bottom: 6px; text-transform: uppercase; }
+    .dice-panel-title { font-size: 11px; font-weight: bold; color: #888; margin-bottom: 6px; text-transform: uppercase; }
     .dice-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
     .dice-btn { background: #1f1f1f; border: 1px solid #333; color: #e0e0e0; padding: 6px 0; border-radius: 4px; font-size: 12px; font-weight: bold; cursor: pointer; text-align: center; }
     .dice-btn:hover { background: #333; border-color: #2196f3; color: #fff; }
 
-    /* Customizado (Quantidade d Lados) */
+    /* Dados Personalizados */
     .custom-dice-row { display: flex; gap: 6px; margin-top: 6px; }
     .custom-dice-row input { background: #1a1a1a; border: 1px solid #333; color: #fff; border-radius: 4px; padding: 4px 6px; font-size: 12px; width: 50%; text-align: center; }
     .custom-dice-row button { flex: 1; background: #2196f3; border: none; color: #fff; border-radius: 4px; font-size: 12px; font-weight: bold; cursor: pointer; }
     .custom-dice-row button:hover { background: #1e88e5; }
 
-    /* Perícias */
+    /* Perícias e Cards */
     .skill-list { display: flex; flex-direction: column; gap: 4px; }
     .skill-row { display: flex; align-items: center; justify-content: space-between; padding: 4px 6px; font-size: 13px; }
     .highlight-blue { color: #2196f3; }
     .highlight-green { color: #4caf50; }
+    .highlight-red { color: #f44336; }
     .attr-tag { font-size: 12px; margin: 0 4px; }
     .bonus-val { display: inline-block; width: 30px; text-align: center; font-weight: bold; }
     .underline-blue { border-bottom: 2px solid #2196f3; }
     .underline-green { border-bottom: 2px solid #4caf50; }
+    .underline-red { border-bottom: 2px solid #f44336; }
 
-    /* Ataques e Rituais */
     .card { background: #111; border: 1px solid #222; border-radius: 6px; padding: 8px; margin-bottom: 8px; }
     .card-title { font-weight: bold; font-size: 14px; margin-bottom: 4px; }
     .card-info { font-size: 12px; color: #a855f7; display: flex; gap: 10px; align-items: center; }
@@ -59,20 +59,18 @@
     .calc-btn { background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 10px; border-radius: 4px; font-size: 14px; font-weight: bold; cursor: pointer; text-align: center; }
     .calc-btn:hover { background: #2a2a2a; }
     .calc-btn.op { background: #2196f3; color: #fff; border-color: #1e88e5; }
-    .calc-btn.op:hover { background: #1e88e5; }
     .calc-btn.clear { background: #f44336; color: #fff; border-color: #e53935; }
-    .calc-btn.clear:hover { background: #e53935; }
   </style>
   <script src="https://unpkg.com/@owlbear-rodeo/sdk"></script>
 </head>
 <body>
 
- <!-- Menu de Navegação por Abas -->
-<div class="tab-container">
-  <button class="tab-btn active" id="btn-attacks" onclick="mudarAba('attacks')">Ataques & Rituais</button>
-  <button class="tab-btn" id="btn-skills" onclick="mudarAba('skills')">Perícias</button>
-  <button class="tab-btn" id="btn-calc" onclick="mudarAba('calc')">Calculadora</button>
-</div>
+  <!-- Menu de Navegação por Abas -->
+  <div class="tab-container">
+    <button class="tab-btn active" id="btn-attacks" onclick="mudarAba('attacks')">Ataques & Rituais</button>
+    <button class="tab-btn" id="btn-skills" onclick="mudarAba('skills')">Perícias</button>
+    <button class="tab-btn" id="btn-calc" onclick="mudarAba('calc')">Calculadora</button>
+  </div>
 
   <!-- Aba 1: Ataques & Rituais -->
   <div id="tab-attacks" class="tab-content active">
@@ -93,8 +91,6 @@
         <button onclick="rolarPersonalizado('qtd-attacks', 'lados-attacks')">Rolar</button>
       </div>
     </div>
-
-    <h3>Ataques & Rituais</h3>
     <div id="attacks-container"></div>
   </div>
 
@@ -117,14 +113,11 @@
         <button onclick="rolarPersonalizado('qtd-skills', 'lados-skills')">Rolar</button>
       </div>
     </div>
-
-    <h3>Perícias</h3>
     <div class="skill-list" id="skills-container"></div>
   </div>
 
   <!-- Aba 3: Calculadora -->
   <div id="tab-calc" class="tab-content">
-    <h3>Calculadora</h3>
     <div class="calc-container">
       <input type="text" id="calc-display" class="calc-display" readonly value="0">
       <div class="calc-grid">
@@ -172,7 +165,6 @@
       }
     }
 
-    // Calculadora
     let calcExpression = "";
     function calcAdd(val) {
       if (calcExpression === "0") calcExpression = "";
@@ -196,7 +188,7 @@
     const atributos = { AGI: 2, FOR: 1, INT: 3, PRE: 3, VIG: 2 };
 
     const pericias = [
-     { nome: "Atualidades", attr: "INT", bonus: -5, treino: 0, cor: "white" },
+      { nome: "Atualidades", attr: "INT", bonus: -5, treino: -5, cor: "white" },
       { nome: "Ciências*", attr: "INT", bonus: 10, treino: 0, cor: "blue" },
       { nome: "Crime*+", attr: "AGI", bonus: 5, treino: 0, cor: "green" },
       { nome: "Diplomacia", attr: "PRE", bonus: 10, treino: 0, cor: "blue" },
@@ -278,18 +270,19 @@
         maiorDado = Math.max(...dados);
       }
 
-      const totalBonus = p.bonus + p.treino;
+      const totalBonus = p.bonus;
       const total = maiorDado + totalBonus;
       let player = "Jogador";
       if (window.OBR && OBR.isReady) {
         try { player = await OBR.player.getName(); } catch (e) {}
       }
 
-      enviarNotificacao(`${player} - Teste de ${p.nome}: [${dados.join(", ")}] ➔ Maior: ${maiorDado} + ${totalBonus} = ${total}`);
+      const sinalSoma = totalBonus >= 0 ? `+ ${totalBonus}` : `- ${Math.abs(totalBonus)}`;
+      enviarNotificacao(`${player} - Teste de ${p.nome}: [${dados.join(", ")}] ➔ Maior: ${maiorDado} ${sinalSoma} = ${total}`);
     }
 
     function renderizar() {
-     const attacksContainer = document.getElementById("attacks-container");
+      const attacksContainer = document.getElementById("attacks-container");
       attacksContainer.innerHTML = `
         <div class="card">
           <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -369,25 +362,52 @@
         </div>
       `;
 
-      document.getElementById("btn-gc").onclick = () => rolarAtaque("Guarda-chuva", 1, 8, 0, "18");
-      document.getElementById("btn-pgc").onclick = () => rolarAtaque("Ponta do Guarda-Chuva", 1, 12, 0, "1/x4");
-      document.getElementById("btn-dec-norm").onclick = () => rolarAtaque("Decadência (Normal)", 2, 8, 2);
-      document.getElementById("btn-dec-disc").onclick = () => rolarAtaque("Decadência (Discente)", 3, 8, 3);
-      document.getElementById("btn-dec-verd").onclick = () => rolarAtaque("Decadência (Verdadeiro)", 8, 8, 8);
+      /* Configurações dos botões de Ataques */
+      document.getElementById("btn-fuzil").onclick = () => rolarAtaque("Fuzil de Assalto", 2, 10, 0, "19/x3");
+      document.getElementById("btn-espingarda").onclick = () => rolarAtaque("Espingarda", 4, 6, 0, "x3");
+      document.getElementById("btn-revolver").onclick = () => rolarAtaque("Revólver", 2, 6, 0, "19/x3");
+      document.getElementById("btn-irmaos").onclick = () => rolarAtaque("Irmãos até a Morte", 2, 8, 0, "19");
+      document.getElementById("btn-wunderwaffe").onclick = () => rolarAtaque("Wunderwaffe Dg-2", 3, 10, 0, "19/x3");
+
+      /* Configurações dos Rituais */
+      document.getElementById("btn-chrono-norm").onclick = () => rolarAtaque("Chronosapiano (Normal)", 3, 8, 3);
+      document.getElementById("btn-chrono-disc").onclick = () => rolarAtaque("Chronosapiano (Discente)", 5, 8, 5);
+      document.getElementById("btn-chrono-verd").onclick = () => rolarAtaque("Chronosapiano (Verdadeiro)", 7, 8, 7);
+
+      document.getElementById("btn-pyro-norm").onclick = () => rolarAtaque("Pyronita (Normal)", 1, 6, 0);
+      document.getElementById("btn-pyro-disc").onclick = () => rolarAtaque("Pyronita (Discente)", 4, 6, 0);
+      document.getElementById("btn-pyro-verd").onclick = () => rolarAtaque("Pyronita (Verdadeiro)", 8, 6, 0);
+
+      document.getElementById("btn-vulpi-norm").onclick = () => rolarAtaque("Vulpimancer (Normal)", 3, 4, 3);
+      document.getElementById("btn-vulpi-disc").onclick = () => rolarAtaque("Vulpimancer (Discente)", 5, 4, 6);
+      document.getElementById("btn-vulpi-verd").onclick = () => rolarAtaque("Vulpimancer (Verdadeiro)", 8, 4, 9);
 
       const skillsContainer = document.getElementById("skills-container");
       skillsContainer.innerHTML = "";
       pericias.forEach(p => {
         const row = document.createElement("div");
         row.className = "skill-row";
-        let classColor = p.cor === "blue" ? "highlight-blue" : (p.cor === "green" ? "highlight-green" : "");
+        
+        let classColor = "";
+        let underlineClass = "";
+        
+        if (p.cor === "blue") {
+          classColor = "highlight-blue";
+          underlineClass = "underline-blue";
+        } else if (p.cor === "green") {
+          classColor = "highlight-green";
+          underlineClass = "underline-green";
+        } else if (p.bonus < 0) {
+          classColor = "highlight-red";
+          underlineClass = "underline-red";
+        }
 
         row.innerHTML = `
           <button class="roll-btn">🎲</button>
           <span class="skill-name ${classColor}" style="flex-grow:1; font-weight:bold;">${p.nome}</span>
           <span class="attr-tag ${classColor}">( ${p.attr} )</span>
           <span class="attr-tag ${classColor}">( ${p.bonus} )</span>
-          <span class="bonus-val ${p.bonus > 0 ? (p.cor === 'blue' ? 'underline-blue highlight-blue' : 'underline-green highlight-green') : ''}">${p.bonus}</span>
+          <span class="bonus-val ${underlineClass} ${classColor}">${p.bonus}</span>
           <span class="bonus-val">${p.treino}</span>
         `;
         row.querySelector(".roll-btn").onclick = () => rolarPericia(p);
@@ -395,16 +415,7 @@
       });
     }
 
-    window.onload = () => {
-      renderizar();
-    };
-
-    if (window.OBR) {
-      OBR.onReady(() => {
-        console.log("Owlbear Rodeo Conectado!");
-      });
-    }
+    window.onload = () => { renderizar(); };
   </script>
 </body>
 </html>
-
