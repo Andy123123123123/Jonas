@@ -1,1 +1,16 @@
+{
+  "name": "Ficha Jonas",
+  "version": "2.0.0",
+  "manifest_version": 2,
+  "description": "Ficha do Jonas",
+  "author": "Paulin",
+  "icon": "https://www.olwbear.rodeo/app-icon.png",
+  "action": {
+    "title": "Ficha Jonas",
+    "icon": "https://www.olwbear.rodeo/app-icon.png",
+    "popover": "/leclerc/index.html",
+    "height": 700,
+    "width": 400
+  }
+}
 
